@@ -1,0 +1,15 @@
+@media (max-width: 576px) {
+	.content {
+		flex-direction: column;
+		margin: 0;
+		padding: 0;
+	}
+
+	.content-left {
+		width: 100% !important;
+	}
+
+	.content-right {
+		width: 100% !important;
+	}
+}

@@ -1,0 +1,30 @@
+.difference {
+	display: flex;
+	align-items: center;
+}
+
+.difference.inc {
+	color: green;
+}
+
+.difference.inc::before {
+	content: '\f0d8';
+	font-family: FontAwesome;
+	margin-right: 8px;
+	line-height: 1;
+	padding: 0;
+	margin-top: 2px;
+}
+
+.difference.dec {
+	color: red;
+}
+
+.difference.dec::before {
+	content: '\f0d7';
+	font-family: FontAwesome;
+	margin-right: 8px;
+	line-height: 1;
+	padding: 0;
+	margin-top: 2px;
+}

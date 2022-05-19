@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" href="./img/logo.svg" />
+		<title>InfoPanel</title>
+
+		<link rel="stylesheet" href="./css/styles.css" />
+
+		<link rel="stylesheet" href="./libs/bootstrap/info-panel.css" />
+
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+			integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+
+		<link rel="stylesheet" href="./css/Currency.css" />
+
+		<script src="./libs/mdb/mdb.min.js"></script>
+
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+		<script
+			src="https://code.jquery.com/jquery-3.6.0.min.js"
+			integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+			crossorigin="anonymous"
+		></script>
+
+		<script src="./libs/jquery-cookie/jquery.cookie.js"></script>
+
+		<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+		<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+		<script src="./libs/money/money.js"></script>
+
+		<script src="./js/Weather.js"></script>
+		<script src="./js/Currency.js"></script>
+
+		<script src="./js/Index.js"></script>
+	</head>
+	<body class="light bg-body">
+		<div class="container pt-5">
+			<div class="d-flex justify-content-end">
+				<div class="form-check form-switch">
+					<input class="form-check-input" type="checkbox" role="switch" id="theme-switch" />
+					<label class="form-check-label" for="flexSwitchCheckDefault">Сменить тему</label>
+				</div>
+			</div>
+
+			<div class="row content">
+				<div class="col-6 content-left">
+					<div class="card mt-3">
+						<h5 class="card-header">Погода</h5>
+						<div class="card-body">
+							<div class="mb-3">
+								<h5 for="exampleFormControlInput1" class="card-title">Введите адрес</h5>
+								<select
+									id="select-address"
+									class="form-select"
+									aria-label="Default select example"
+								></select>
+							</div>
+							<div class="row">
+								<div class="col">
+									<div class="card card-inner card-weather">
+										<div class="card-body p-4">
+											<div class="d-flex">
+												<h6 id="weather-city" class="flex-grow-1">Адрес</h6>
+												<h6 id="weather-time">Время</h6>
+											</div>
+
+											<div class="d-flex flex-column text-center mt-5 mb-4">
+												<h6 class="display-4 mb-0 font-weight-bold weather-temp">
+													<span id="weather-temp">Темп.</span>°C
+												</h6>
+												<span id="weather-name" class="small" style="color: #868b94"
+													>Погода</span
+												>
+											</div>
+
+											<div class="d-flex align-items-center">
+												<div class="flex-grow-1" style="font-size: 1rem">
+													<div>
+														<i class="fas fa-wind fa-fw" style="color: #868b94"></i>
+														<span class="ms-1">
+															<span id="weather-wind">Ветер</span> м/с
+														</span>
+													</div>
+													<div>
+														<i class="fas fa-tint fa-fw" style="color: #868b94"></i>
+														<span class="ms-1">
+															<span id="weather-water">Влажность</span> %
+														</span>
+													</div>
+												</div>
+												<div>
+													<img
+														id="weather-img"
+														src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-weather/ilu1.webp"
+														width="100px"
+													/>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-6 content-right">
+					<div class="card mt-3">
+						<h5 class="card-header">Валюты</h5>
+						<div class="card-body">
+							<div class="row">
+								<h5 class="card-title">Актуальный курс валют</h5>
+								<div class="col">
+									<div class="card card-inner">
+										<div class="card-body d-flex justify-content-between align-items-center">
+											<div class="d-flex flex-column justify-content-between align-items-center">
+												<div>$ <span id="dailyDollar">-</span></div>
+												<div class="difference">-</div>
+											</div>
+											<div class="d-flex flex-column justify-content-between align-items-center">
+												<div>€ <span id="dailyEuro">-</span></div>
+												<div class="difference">-</div>
+											</div>
+											<div class="d-flex flex-column justify-content-between align-items-center">
+												<div>¥ <span id="dailyYuan">-</span></div>
+												<div class="difference">-</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row mt-3">
+								<h5 class="card-title">Конвертер валют</h5>
+								<div class="col">
+									<div class="card card-inner">
+										<div class="card-body" style="min-height: 255px">
+											<div class="mb-3">
+												<input
+													type="number"
+													class="form-control"
+													id="convert-sum"
+													placeholder="Введите сумму"
+												/>
+											</div>
+
+											<div class="row">
+												<div class="col-6">
+													<select
+														id="select-from"
+														class="form-select"
+														aria-label="Default select example"
+													></select>
+												</div>
+
+												<div class="col-6">
+													<select
+														id="select-to"
+														class="form-select"
+														aria-label="Default select example"
+													></select>
+												</div>
+											</div>
+
+											<div class="row mt-3">
+												<div class="col">
+													<button id="btn-result" class="btn btn-primary btn-color w-100">
+														Посчитать
+													</button>
+												</div>
+											</div>
+
+											<div
+												id="convert-result"
+												class="alert d-none mt-3"
+												role="alert"
+												style="margin-bottom: 0; padding-bottom: 6px; padding-top: 6px"
+											>
+												Тут отобразиться результат
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<footer class="mt-3 d-flex justify-content-end">&copy; InfoPanel. v0.2.0</footer>
+		</div>
+	</body>
+</html>
