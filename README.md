@@ -1,2 +1,2 @@
-# chuvakov1.github.io
+# chuvakov.github.io
 Тест хостинга на ГИТе
